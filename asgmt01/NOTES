@@ -18,8 +18,8 @@ Regular:
 
 STRUCTURE:							| ORDER OF WORK:
 								|	1) coordinate.cpp  -complete !!Not tested for memory leaks
-+--------------+  +============+				|	2) list.cpp
-|<iostream>    |->|<iostream>  |				|	3) fire.cpp
++--------------+  +============+				|	2) fire.cpp
+|<iostream>    |->|<iostream>  |				|	3) list.cpp
 |coordinate.cpp|  |coordinate.h|				|
 +--------------+  +============+				|
                    ^						|
@@ -37,6 +37,12 @@ STRUCTURE:							| ORDER OF WORK:
 
 
 NOTES:
-	Coordinate.h
+	coordinate.h
 		! default constructor is empty
 		* degreeChar{0xB0) is the little o degree character
+	
+	EURIKA MOMENTS
+		virtual deconstructors
+			list needs a virtual deconstructor so fire's deconstructor gets called.
+			fire needs a virtual deconstructor so coorindate's deconstructor gets called.
+			coordinate does not call upon any classes with memory allocation, thus does not need a virtual deconstructor.

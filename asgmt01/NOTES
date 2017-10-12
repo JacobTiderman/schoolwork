@@ -1,0 +1,42 @@
+	These are Jacob's Notes
+	-----------------------
+
+Premium v Regular
+       A|B
+    Hard|Easy
+  Sorted|!Sorted
+
+Premium:
+	districts are listed in alpha order
+	NOTE: Sorting may come into play when setting up the linked list
+
+Regular:
+	districts are listed in any order
+
+
+
+
+STRUCTURE:							| ORDER OF WORK:
+								|	1) coordinate.cpp  -complete !!Not tested for memory leaks
++--------------+  +============+				|	2) list.cpp
+|<iostream>    |->|<iostream>  |				|	3) fire.cpp
+|coordinate.cpp|  |coordinate.h|				|
++--------------+  +============+				|
+                   ^						|
+                   |						|
+    +----------+  +=========+     +=========+  +---------+	|
+    |<iostream>|->|<ostream>|<----|<ostream>|<-|<cstring>|	|
+    |<cstring> |  |fire.h   |<-+->|list.h   |  |list.cpp |	|
+    |fire.cpp  |  +=========+  |  +=========+  +---------+	|
+    +----------+               |				|
+                              +===========+			|
+                              |<cstring>  |			|
+                              |<iostream> |			|
+                              |asgmt01.cpp|			|
+                              +===========+			|
+
+
+NOTES:
+	Coordinate.h
+		! default constructor is empty
+		* degreeChar{0xB0) is the little o degree character

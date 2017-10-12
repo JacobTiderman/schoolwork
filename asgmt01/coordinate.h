@@ -17,7 +17,11 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, Coordinate& coord);
 
 private:
-	static const unsigned char		degreeChar{0xB0};
+	int degrees;
+	int minutes;
+	int secondsTenths;
+	static const unsigned char		degreeChar{0xB0}; 	//WARNING: Testing using "g++ -std=c++11" and "g++ -std=gnu++11" both compile but do not display the degree symbol during operation.
+									//NOTE: This will be left under the assumption the symbol will show during final compilement.
 };
 
 #endif // _COORDINATE_H_

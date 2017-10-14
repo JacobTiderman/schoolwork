@@ -14,10 +14,12 @@ Fire::Fire(const District district, const char * const name,
 {
 	// your code here, or in this constructor's initialization list
 	char* test = strdup(name);
+		//char *strdup(const char *s) -- The strdup() function returns a pointer to a new string which is a duplicate of the string s
+		//link -- https://linux.die.net/man/3/strdup
+		//Intended use:
+			//Due to "name" being passed in as a "const char * const", it is hard to save the value of "name" into "this->name" (provided in fire.h) which is a "char*". So strdup() will duplicate the value of "name" and reeturn it in a "char*" form which can be saved in the private variable "this->name".
 	strcpy(test, this->name);
 	delete test;
-	//latitude = Coordinate(latDeg, latMin, latSec);
-	//longitude = Coordinate(longDeg, longMin, longSec);
 }
 
 Fire::Fire(const District district, const char * const name,

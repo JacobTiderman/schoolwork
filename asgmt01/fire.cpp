@@ -42,20 +42,54 @@ Fire::~Fire()
 void Fire::displayColumnHeadings(ostream& out)
 {
 	// your code here
-	std::cout << "name                     district        longitude       latitude\n"
-		  << "----------------------   -------------   -------------   -------------\n";
+	out << "name                     district        longitude       latitude\n"
+	    << "----------------------   -------------   -------------   -------------\n";
 }
 
 std::ostream& operator<<(std::ostream& out, District district)
 {
 	// your code here
-
+	//Note: this is not for class Fire, this is for enum class District
+	switch (district) {
+	case District::Astoria: 
+		out << "Astoria";
+		break;
+	case District::Columbia_City:
+		out << "Columbia City";
+		break;
+	case District::Dallas:
+		out << "Dallas";
+		break;
+	case District::Forest_Grove:
+		out << "Forest Grove";
+		break;
+	case District::Molalla:
+		out << "Molalla";
+		break;
+	case District::Philomath:
+		out << "Philomath";
+		break;
+	case District::Santiam:
+		out << "Santiam";
+		break;
+	case District::Tillamook:
+		out << "Tillamook";
+		break;
+	case District::Toledo:
+		out << "Tillamook";
+		break;
+	default:
+		out << "ERROR_FIRESWITCH";
+		break;
+	}
+	
 	return out;
 }
 
 ostream& operator<<(ostream& out, Fire* fire)
 {
 	// your code here
-
+	out << fire->getName() << "	" << fire->getDistrict(); 
+	out << "	" << fire->getLongitude() << "	" << fire->getLatitude() << "\n";
 	return out;
 }

@@ -7,5 +7,5 @@
 
 int main(){
 	Fire fire("district", "name", 100, 10, 1, 200, 20, 2);
-	std::fire;
+	std::cout << fire;
 }

@@ -53,10 +53,11 @@ void List::displayByName(ostream& out) const
 	Node *current;
 	current = headByName; //Create a current pointer pointing at head
 	while(current != nullptr) {
-		out << current->item;
+		Fire *f = new Fire(current->item.getDistrict(), current->item.getName(), current->item.getLatitude(), current->item.getLongitude());
+		out << f;
 		current = current->nextByName;
+		delete f;
 	}
-	delete current;
 }
 
 void List::displayByDistrict(ostream& out) const
@@ -65,20 +66,21 @@ void List::displayByDistrict(ostream& out) const
 	Node *current;
 	current = headByDistrict;
 	while(current != nullptr) {
-		out << current->item;
+		Fire *f = new Fire(current->item.getDistrict(), current->item.getName(), current->item.getLatitude(), current->item.getLongitude());
+		out << f;
 		current = current->nextByDistrict;
+		delete f;
 	}
-	delete current;
 }
 
 void List::insert(const Fire& fire)
 {
 	// your code here
-	Node node = (Node*)malloc(sizeof(Node)); //Create a Node called node, and allocate memory for node
-	node.item = fire; //move fire object into node
-	node.nextByName = headByName;
+	Node *node = (Node*)malloc(sizeof(Node)); //Create a Node called node, and allocate memory for node
+	node->item = fire; //move fire object into node
+	node->nextByName = headByName;
 	headByName = node;
-	node.nextByDistrict = headByDistrict;
+	node->nextByDistrict = headByDistrict;
 	headByDistrict = node;
 	//Thread inorder by name
 	/*Node *temp = headByName;

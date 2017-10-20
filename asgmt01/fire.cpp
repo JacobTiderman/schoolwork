@@ -14,10 +14,14 @@ Fire::Fire(const District district, const char * const name,
 {
 	// your code here, or in this constructor's initialization list
 	char* test = strdup(name);
-		//char *strdup(const char *s) -- The strdup() function returns a pointer to a new string which is a duplicate of the string s
-		//link -- https://linux.die.net/man/3/strdup
-		//Intended use:
-			//Due to "name" being passed in as a "const char * const", it is hard to save the value of "name" into "this->name" (provided in fire.h) which is a "char*". So strdup() will duplicate the value of "name" and reeturn it in a "char*" form which can be saved in the private variable "this->name".
+		/*
+		char *strdup(const char *s) -- The strdup() function returns a pointer to a new string which is a duplicate of the string s
+		link -- https://linux.die.net/man/3/strdup
+		Intended use:
+			*Due to "name" being passed in as a "const char * const", it is hard to save the value of "name" into "this->name" 
+			(provided in fire.h) which is a "char*". So strdup() will duplicate the value of "name" and reeturn it in a "char*"
+			form which can be saved in the private variable "this->name".
+		*/
 	strcpy(test, this->name);
 	delete test;
 }
@@ -89,6 +93,13 @@ std::ostream& operator<<(std::ostream& out, District district)
 ostream& operator<<(ostream& out, Fire* fire)
 {
 	// your code here
-	out << fire->getName() << "	" << fire->getDistrict() << "	" << fire->getLongitude() << "	" << fire->getLatitude() << "\n";
+	//Due to the operator<< in coordinate.h being a Coordinate& and not a Coordinate*
+		//out << fire->getLongitude();  does not work
+	Coordinate* lon;
+	*lon = fire->getLongitude();
+	
+	out << fire->getName() << "	" << fire->getDistrict() << "	"
+	    << lon;
+	    //<< fire->getLongitude() << "	" << fire->getLatitude() << "\n";
 	return out;
 }

@@ -89,7 +89,6 @@ std::ostream& operator<<(std::ostream& out, District district)
 ostream& operator<<(ostream& out, Fire* fire)
 {
 	// your code here
-	out << fire->getName() << "	" << fire->getDistrict(); 
-	out << "	" << fire->getLongitude() << "	" << fire->getLatitude() << "\n";
+	out << fire->getName() << "	" << fire->getDistrict() << "	" << fire->getLongitude() << "	" << fire->getLatitude() << "\n";
 	return out;
 }

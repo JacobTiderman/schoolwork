@@ -1,6 +1,8 @@
 #include <iostream>
 #include "coordinate.h"
 
+#include<iomanip> // -- Needed to include for setw(int)
+
 using namespace std;
 
 Coordinate::Coordinate(int degrees, int minutes, int secondsTenths) : 
@@ -30,5 +32,9 @@ Coordinate::~Coordinate(void)
 ostream& operator<<(ostream& out, Coordinate& coord)
 {
 	// your code here
-	return out << coord.degrees << coord.degreeChar << " " << coord.minutes << "\' " << coord.secondsTenths << "\"";
+return out << setw(4) << coord.degrees << coord.degreeChar 
+	   << " "
+	   << setw(3) << coord.minutes << "\'" 
+	   << " "
+	   << setw(4) << coord.secondsTenths << "\"";
 }

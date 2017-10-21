@@ -1,6 +1,7 @@
 #include <cstring>
 #include "list.h"
 
+
 using namespace std;
 
 const char	List::YOUR_NAME[]{/*"I. Forgot"*/ "Jacob Tiderman"};
@@ -28,10 +29,10 @@ List::~List()
 		headByName->nextByDistrict = nullptr; //As we work through the list the headByDistrict thread will be dissolved
 		headByName = headByName->nextByName; //Shift headByName Node to the next Node in the list
 		temp->nextByName = nullptr; //set the second pointer in the Node to null
-		free(temp);
+		delete(temp);
 	}
 	
-	free(headByName);
+	delete(headByName);
 }
 
 /*
@@ -50,38 +51,67 @@ List::Node::Node(const Fire& fire) :
 void List::displayByName(ostream& out) const
 {
 	// your code here
+	
+	bool lock = true;
+	
 	Node *current;
 	current = headByName; //Create a current pointer pointing at head
 	while(current != nullptr) {
 		Fire *f = new Fire(current->item.getDistrict(), current->item.getName(), current->item.getLatitude(), current->item.getLongitude());
+		if(lock) { 
+			f->displayColumnHeadings(out); 
+			lock = false;
+		}
 		out << f;
 		current = current->nextByName;
 		delete f;
 	}
+	
 }
 
 void List::displayByDistrict(ostream& out) const
 {
 	// your code here
+	
+	bool lock = true;
+	
 	Node *current;
 	current = headByDistrict;
 	while(current != nullptr) {
 		Fire *f = new Fire(current->item.getDistrict(), current->item.getName(), current->item.getLatitude(), current->item.getLongitude());
+		if(lock) { 
+			f->displayColumnHeadings(out); 
+			lock = false;
+		}
 		out << f;
 		current = current->nextByDistrict;
 		delete f;
 	}
+	
 }
 
 void List::insert(const Fire& fire)
 {
+	//std::cout.setstate(std::ios_base::goodbit);
+	
+	
 	// your code here
+	Node *node = new Node(fire);
+	node->nextByName = headByName;
+	node->nextByDistrict = headByDistrict;
+	
+	headByName = node;
+	headByDistrict = node;
+	
+/*	
 	Node *node = (Node*)malloc(sizeof(Node)); //Create a Node called node, and allocate memory for node
 	node->item = fire; //move fire object into node
 	node->nextByName = headByName;
 	headByName = node;
 	node->nextByDistrict = headByDistrict;
 	headByDistrict = node;
+*/	
+	
 	//Thread inorder by name
 	/*Node *temp = headByName;
 	while(temp != nullptr) {

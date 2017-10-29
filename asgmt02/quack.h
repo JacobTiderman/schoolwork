@@ -57,6 +57,8 @@ private:
 	char	*items;						// pointer to storage for circular array,
 										// each item in the array is a char
 	int		capacity;					// # of slots in array
+	int front; //This number keeps track of which element in the array is the front
+	int back;  //This number keeps track of which element in the array is the back
 
 public:
 	friend std::ostream& operator<<(std::ostream& out, Quack *q);

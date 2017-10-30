@@ -59,7 +59,10 @@ private:
 	int		capacity;					// # of slots in array
 	int front; //This number keeps track of which element in the array is the front
 	int back;  //This number keeps track of which element in the array is the back
-
+	bool isData; 	//Using front and back as flags, we can keep track of data in the circular array. 
+			//The two flags will "meet", or have the same interger, when the array is full or empty.
+			//How the data is saved, ie circular, is irrelvant so long as we know where the line of memory
+			//begins and ends.
 public:
 	friend std::ostream& operator<<(std::ostream& out, Quack *q);
 };

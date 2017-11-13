@@ -1,0 +1,71 @@
+keep track of:
+	-ticker symbol		(e.g. IBM for International Buisness Machines)
+	-stock / fund name	(e.g. International Buisness Machines)
+	-share price		(25.73 int not float or double)
+	-date of share price 	(May, 23, 1967)
+
+Implement as hash table
+	use linear probing for collisions
+		move though table in increasing order for next slot to put new data
+	table is a circular array
+
+stock input fail
+	1) stock is in the table
+	2) table is full
+	
+	no other exceptions
+	must indicate failure to user
+	
+HashMap::get() , HashMap::put() , HashMap::remove()
+	must use hashing and linear probing
+		just linear search will cause massive point reduction
+
+HashMap::hashStr()
+	must be fast as possible
+		speed is non-obvious
+		faster = more points
+
+Output
+	must be identical to correctOutput.txt
+	use iomanip
+	
+	"hs" label for what your function returned as symbolHash
+	"hi" label for hashIndex
+	"ui" label for usedIndex
+	"sl" label for linear probe squence length
+	
+	diff -w -B cannot find any differences
+
+Tarball
+	use ~michael.trigoboff/bin/tarz
+	DO NOT:
+		add files
+		remove files
+		move files
+		rename files
+
+Strings
+	<cstring>
+		if included must use cstring methods
+			example
+				int strlen(char *str)
+				void strcpy(char *dst, char *src)
+					copies src to dst
+
+Memory leaks
+	No memory leaks.
+	use ~michael.trigoboff/bin/mchk to check this
+		will report other errors
+		required to fix these issues
+
+Init Lists
+	required
+
+Grading
+	failure to compile = zero points
+	crashes = zero points
+	scripts make a log file, to which he produces the grade
+
+
+
+

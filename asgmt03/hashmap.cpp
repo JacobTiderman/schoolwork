@@ -1,5 +1,5 @@
 #include "hashmap.h"
-
+#include<cstring>
 using namespace std;
 
 // change the value of this variable to be your own name instead of "I. Forgot"
@@ -23,14 +23,29 @@ bool HashMap::get(char const * const symbol, Stock& s,
 {
 	// If the symbol is not found, this function is required
 	// to set usedIndex to -1 before it returns false.
-
+	if(strlen(symbol) == 0 || nStocks == 0)
+	{
+		usedIndex = -1;
+		return false;
+	}
+	
+	//Symbol has contents, so lets start looking for it
+	//Lets hash our search to find the possible places it could have landed
+		//The hashing system hashes the symbol. Thankfully that is all we have
+	symbolHash = hashStr(symbol);
+	hashIndex = symbolHash % capacity;
+	
+	//Linear probe for possible data
+	
+	
+	
+	
 	// recode these to return the right things
 	symbolHash = 0xFFFFFFFF;
 	hashIndex =  0xFFFFFFFF;
 	usedIndex =  0xFFFFFFFF;
 	seqLength =  0xFFFFFFFF;
-
-	return false;
+	return true;
 }
 
 bool HashMap::put(const Stock& s,
